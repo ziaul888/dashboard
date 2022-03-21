@@ -1,10 +1,16 @@
 import React from 'react'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import "./widget.scss"
 const Widget = ({type}) => {
  
   let data;
+
+  const amount=100;
+  const diff=20
 
   switch(type){
       case "user":
@@ -12,31 +18,32 @@ const Widget = ({type}) => {
               title:"USERS",
               isMoney:false,
               link:"See all users",
-              icon:<PersonOutlineIcon className='icon'/>
+              icon:<PersonOutlineIcon className='icon' style={{color:"crimson",
+            backgroundColor:"rgba(255,0,0,0.2"}}/>
           }
           break;
           case "order":
             data={
-                title:"USERS",
+                title:"ORDERS",
                 isMoney:false,
-                link:"See all users",
-                icon:<PersonOutlineIcon className='icon'/>
+                link: "View all orders",
+                icon:<ShoppingCartOutlinedIcon className='icon'/>
             }
             break;
-            case "user":
+            case "erarning":
                 data={
-                    title:"USERS",
-                    isMoney:false,
-                    link:"See all users",
-                    icon:<PersonOutlineIcon className='icon'/>
+                     title: "EARNINGS",
+                    isMoney: true,
+                     link: "View net earnings",
+                    icon:<MonetizationOnOutlinedIcon className='icon'/>
                 }
                 break;
-                case "user":
+                case "banlance":
                     data={
-                        title:"USERS",
-                        isMoney:false,
-                        link:"See all users",
-                        icon:<PersonOutlineIcon className='icon'/>
+                        title: "BALANCE",
+                        isMoney: true,
+                        link: "See details",
+                        icon:<AccountBalanceWalletOutlinedIcon className='icon'/>
                     }
                     break;
               default:
@@ -45,17 +52,17 @@ const Widget = ({type}) => {
   return (
     <div className='widget'>
      <div className='left'>
-     <span className='title'>USERS</span>
-     <span className='counter'>12234</span>
-     <span className='link'>See all users</span>
+     <span className='title'>{data.title}</span>
+     <span className='counter'>{data.isMoney && "$"}{amount}</span>
+     <span className='link'>{data.link}</span>
      </div>
      <div className='right'>
        <div className='percentage positive'>
        
        <KeyboardArrowUpIcon className='icon'/>
-       20%
+       {diff}%
        </div>
-       <PersonOutlineIcon className='icon'/>
+       {data.icon}
      </div>
     </div>
   )
