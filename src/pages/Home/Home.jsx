@@ -23,6 +23,9 @@ const Home = () => {
              <Featured/>
              <Charts/>
              </div>
+             <div className='listConatiner'>
+              <div className='listTitle'>Latest Transactions </div>
+             </div>
             </div>
         </div>
     )
